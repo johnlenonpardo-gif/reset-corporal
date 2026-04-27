@@ -1,5 +1,23 @@
+"use client";
+
+declare global {
+  interface Window {
+    gtagSendEvent?: (url: string) => boolean;
+  }
+}
+
 export default function ResetCorporalPage() {
   const hotmartUrl = "https://go.hotmart.com/A104709392J?dp=1&redirectionUrl=https%3A%2F%2Fhotmart.com%2Fes%2Fmarketplace%2Fproductos%2Freset-corporal-30-dias%2FA104709392J";
+
+  const handleComprar = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    if (window.gtagSendEvent) {
+      window.gtagSendEvent(hotmartUrl);
+    } else {
+      window.location.href = hotmartUrl;
+    }
+  };
 
   const includes = [
     "Libro digital completo en formato PDF",
@@ -66,8 +84,7 @@ export default function ResetCorporalPage() {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href={hotmartUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleComprar}
                 className="rounded-full bg-[#f0b928] px-8 py-4 text-center text-base font-black text-[#17351f] shadow-xl transition hover:scale-105 hover:bg-white"
               >
                 Comprar ahora
@@ -258,10 +275,7 @@ export default function ResetCorporalPage() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {benefits.map((item) => (
-              <div
-                key={item}
-                className="rounded-3xl bg-white p-6 shadow-md"
-              >
+              <div key={item} className="rounded-3xl bg-white p-6 shadow-md">
                 <p className="text-lg font-bold text-[#28452e]">{item}</p>
               </div>
             ))}
@@ -299,8 +313,7 @@ export default function ResetCorporalPage() {
 
             <a
               href={hotmartUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={handleComprar}
               className="mt-8 inline-flex w-full justify-center rounded-full bg-[#285c32] px-8 py-4 text-base font-black text-white shadow-xl transition hover:scale-105 hover:bg-[#17351f]"
             >
               Comprar ahora
