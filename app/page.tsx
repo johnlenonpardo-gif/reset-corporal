@@ -7,7 +7,7 @@ declare global {
 }
 
 export default function ResetCorporalPage() {
-  const hotmartUrl = "https://go.hotmart.com/A104709392J?dp=1&redirectionUrl=https%3A%2F%2Fhotmart.com%2Fes%2Fmarketplace%2Fproductos%2Freset-corporal-30-dias%2FA104709392J";
+  const hotmartUrl = "https://pay.hotmart.com/A104709392J";
 
   const handleComprar = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
